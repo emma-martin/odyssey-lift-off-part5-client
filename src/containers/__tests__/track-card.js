@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderApollo, cleanup, waitForElement } from '../../utils/test-utils';
+import { cleanup, renderApollo, waitForElement } from '../../utils/test-utils';
 import TrackCard from '../track-card';
 
 const mockTrackCardData = {
@@ -7,7 +7,7 @@ const mockTrackCardData = {
   title: 'Cat-stronomy, an introduction',
   thumbnail:
     'https://res.cloudinary.com/dety84pbu/image/upload/v1598465568/nebula_cat_djkt9r.jpg',
-  length: 2377,
+  durationInSeconds: 2377,
   author: {
     name: 'Henri, le Chat Noir',
     photo:

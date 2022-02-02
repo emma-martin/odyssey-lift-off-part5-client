@@ -1,9 +1,9 @@
-import React from 'react';
+import { gql, useMutation } from '@apollo/client';
 import styled from '@emotion/styled';
+import { Link } from '@reach/router';
+import React from 'react';
 import { colors, mq } from '../styles';
 import { humanReadableTimeFromSeconds } from '../utils/helpers';
-import { Link } from '@reach/router';
-import { gql, useMutation } from '@apollo/client';
 
 /**
  * Mutation to increment a track's number of views
@@ -28,7 +28,7 @@ export const INCREMENT_TRACK_VIEWS = gql`
  * for each track populating the tracks grid homepage.
  */
 const TrackCard = ({ track }) => {
-  const { title, thumbnail, author, length, modulesCount, id } = track;
+  const { title, thumbnail, author, durationInSeconds, modulesCount, id } = track;
 
   const [incrementTrackViews] = useMutation(INCREMENT_TRACK_VIEWS, {
     variables: { incrementTrackViewsId: id },
@@ -51,7 +51,7 @@ const TrackCard = ({ track }) => {
             <AuthorAndTrack>
               <AuthorName>{author.name}</AuthorName>
               <TrackLength>
-                {modulesCount} modules - {humanReadableTimeFromSeconds(length)}
+                {modulesCount} modules - {humanReadableTimeFromSeconds(durationInSeconds)}
               </TrackLength>
             </AuthorAndTrack>
           </CardFooter>
